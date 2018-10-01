@@ -61,11 +61,11 @@ def densenet(images, num_classes=1001, is_training=False,
         with slim.arg_scope(bn_drp_scope(is_training=is_training,
                                          keep_prob=dropout_keep_prob)) as ssc:
             pass
-            ##########################
-            # Put your code here.
-			current = end_points['pre_conv2'] = slim.conv2d(images, 2*growth, [7, 7], stride=2, padding='same', scope='pre_conv2')
+            ##########################            # Put your code here.            
+            
+            current = end_points['pre_conv2'] = slim.conv2d(images, 2*growth, [7, 7], stride=2, padding='same', scope='pre_conv2')
             current = end_points['pre_pool2'] = slim.max_pool2d(current, [3, 3], stride=2, scope='pre_pool2')
-
+            
             current = end_points['block1'] = block(current, 12, growth, scope='lblock1')
             
             current = end_points['transition1_conv2'] = bn_act_conv_drp(current, growth, [1, 1], scope='transition1_conv2')
